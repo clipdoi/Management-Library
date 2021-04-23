@@ -179,11 +179,17 @@ public class Sign_up extends JFrame {
 			librarian.setAnswer(jtextFieldAswer.getText().trim());
 			librarian.setCreated(jcalendarComboCreate.getDate());
 			LibrarianModel librarianModel = new LibrarianModel();
-			if (librarianModel.create(librarian)) {
-				JOptionPane.showMessageDialog(null, "Done");
+			if(jtextFieldUsername.getText().trim()
+					.equals(librarianModel.search(jtextFieldUsername.getText().trim()).getUsername())) {
+				JOptionPane.showMessageDialog(null, "Username exist!");
 			} else {
-				JOptionPane.showMessageDialog(null, "Failed");	
+				if (librarianModel.create(librarian)) {
+					JOptionPane.showMessageDialog(null, "Done");
+				} else {
+					JOptionPane.showMessageDialog(null, "Failed");	
+				}
 			}
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

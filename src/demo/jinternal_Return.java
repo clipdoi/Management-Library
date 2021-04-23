@@ -208,7 +208,7 @@ public class jinternal_Return extends JInternalFrame {
 			r.setFees(Double.parseDouble(jtextFieldFees.getText()));
 			r.setReturn_date(jcalendarComboReturn.getDate());
 			Book b = new Book();
-			b.setStatus(jchckbxStatusBook.isSelected());
+			b.setStatus(true);
 			ReturnModel returnModel = new ReturnModel();
 			BookModel bookModel = new BookModel();
 			if (returnModel.create(r) && bookModel.update(b, r)) {
